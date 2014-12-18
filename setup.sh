@@ -120,6 +120,10 @@ do_patchheartbleed() {
   cd ../
 }
 
+do_patchexcludegoogle() {
+  #google code can't be acquired in some area ,so exclude it (cxmicrowave)
+  patch meta-oe/meta-oe/recipes-multimedia/libav/libav.inc < setup/PatchExcludeLibvpx.patch
+}
 
 main() {
   my_dir=$(dirname $(readlink -f $0))
@@ -138,6 +142,8 @@ main() {
   do_bblayers_conf
   do_local_conf
   do_patchheartbleed
+
+  do_patchexcludegoogle
 }
 
 main "$@"
