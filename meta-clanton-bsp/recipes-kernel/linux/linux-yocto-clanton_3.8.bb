@@ -48,7 +48,7 @@ require recipes-kernel/linux/linux-yocto.inc
 
 SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;branch=linux-3.8.y"
 
-SRC_URI += "file://quark.cfg"
+SRC_URI += "file://quark_xenomai.cfg"
 SRC_URI += "file://clanton-standard.scc"
 
 LINUX_VERSION ?= "3.8"
@@ -56,7 +56,10 @@ LINUX_VERSION_EXTENSION ?= "-clanton"
 
 # Override SRCREV to point to a different commit in a bbappend file to
 # build a different release of the Linux kernel.
-SRCREV = "531ec28f9f26f78797124b9efcf2138b89794a1e"
+#3.8.7
+#SRCREV = "531ec28f9f26f78797124b9efcf2138b89794a1e"	
+#3.8.13
+SRCREV = "dbf932a9b316d5b29b3e220e5a30e7a165ad2992"	
 
 PR = "r0"
 PV = "${LINUX_VERSION}"
@@ -67,7 +70,7 @@ COMPATIBLE_MACHINE = "clanton"
 
 RDEPENDS_kernel-base=""
 
-SRC_URI += "file://0001-tty-don-t-deadlock-while-flushing-workqueue-quark.patch"
+#SRC_URI += "file://0001-tty-don-t-deadlock-while-flushing-workqueue-quark.patch"
 SRC_URI += "file://0002-driver-core-constify-data-for-class_find_devic-quark.patch"
 SRC_URI += "file://0003-TTY-mark-tty_get_device-call-with-the-proper-c-quark.patch"
 SRC_URI += "file://0004-pwm-Add-sysfs-interface-quark.patch"
@@ -88,3 +91,5 @@ SRC_URI += "file://0018-Quark-sensors-quark.patch"
 SRC_URI += "file://0019-Quark-SC-SPI-quark.patch"
 SRC_URI += "file://0020-Quark-IIO-quark.patch"
 SRC_URI += "file://0021-Quark-SPI-flash-quark.patch"
+SRC_URI += "file://0022-Xenomai-for-quark.patch"
+#SRC_URI += "file://0023-Xenomai-patch-append.patch"

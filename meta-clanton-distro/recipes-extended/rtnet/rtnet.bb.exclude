@@ -1,0 +1,38 @@
+SUMMARY = "rtnet"
+DESCRIPTION = "rtnet"
+HOMEPAGE = "http://www.rtnet.org"
+SECTION = "console/network"
+LICENSE = "GPLv2"
+LIC_FILES_CHKSUM = "file://COPYING;md5=d368405f1c604912f51ba286eed9944a"
+
+DEPENDS = "xenomai virtual/kernel"
+RDEPENDS = "xenomai"
+
+SRC_URI = "git://git.code.sf.net/p/rtnet/code"
+
+SRCREV = "2c718c680bbda7d1abed918a2c4226b1713791c0"
+
+
+S = "${WORKDIR}/git"
+
+
+#inherit autotools
+
+do_configure() {
+echo $STAGING_KERNEL_DIR
+  ${S}/configure --build=i686-linux --host=i586-poky-linux-uclibc --target=i586-poky-linux-uclibc --with-linux=${STAGING_KERNEL_DIR}
+
+}
+
+#--host etc. copied from autotool log
+do_compile() {
+  oe_runmake
+}
+
+do_install() {
+  oe_runmake DESTDIR=${D} install
+  mknod ${D}dev/rtnet c 10 240
+}
+
+PACKAGES = "${PN}"
+
