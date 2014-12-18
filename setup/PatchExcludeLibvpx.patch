@@ -1,0 +1,4 @@
+12c12
+< DEPENDS = "x264 virtual/libsdl zlib libogg libvorbis libvpx libtheora ${@base_conditional('ENTERPRISE_DISTRO', '1', '', 'liba52', d)}"
+---
+> DEPENDS = "virtual/libsdl zlib libogg libvorbis libtheora ${@base_conditional('ENTERPRISE_DISTRO', '1', '', 'liba52', d)}"
