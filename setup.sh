@@ -123,8 +123,8 @@ do_patchheartbleed() {
 do_patchexcludegoogle() {
   #google code can't be acquired in some area ,so exclude it (cxmicrowave)
   patch meta-oe/meta-oe/recipes-multimedia/libav/libav.inc < setup/PatchExcludeLibvpx.patch
-  rm meta-oe/meta-oe/recipes-multimedia/webm/libvpx
-  rm meta-oe/meta-oe/recipes-multimedia/x264
+  rm -rf meta-oe/meta-oe/recipes-multimedia/webm/libvpx
+  rm -rf meta-oe/meta-oe/recipes-multimedia/x264
 }
 
 main() {
