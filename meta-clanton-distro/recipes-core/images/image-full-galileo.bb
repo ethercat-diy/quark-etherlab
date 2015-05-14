@@ -4,7 +4,7 @@ IMAGE_INSTALL += "galileo-target"
 IMAGE_INSTALL += "mtd-utils-jffs2"
 IMAGE_INSTALL += "quark-init"
 
-IMAGE_INSTALL += "xenomai"
+#IMAGE_INSTALL += "xenomai"
 
 IMAGE_INSTALL += "gcc"
 IMAGE_INSTALL += "libgcc"

@@ -48,7 +48,7 @@ require recipes-kernel/linux/linux-yocto.inc
 
 SRC_URI = "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git;branch=linux-3.8.y"
 
-SRC_URI += "file://quark_xenomai.cfg"
+SRC_URI += "file://quark_realtime.cfg"
 SRC_URI += "file://clanton-standard.scc"
 
 LINUX_VERSION ?= "3.8"
@@ -91,5 +91,7 @@ SRC_URI += "file://0018-Quark-sensors-quark.patch"
 SRC_URI += "file://0019-Quark-SC-SPI-quark.patch"
 SRC_URI += "file://0020-Quark-IIO-quark.patch"
 SRC_URI += "file://0021-Quark-SPI-flash-quark.patch"
-SRC_URI += "file://0022-Xenomai-for-quark.patch"
+SRC_URI += "file://hal-linux-3.8.13-x86-4.patch"
+SRC_URI += "file://linux-quark-rtai_v3.8.13.patch"
+#SRC_URI += "file://linux-quark-rtai_v3.8.13_2.patch"
 #SRC_URI += "file://0023-Xenomai-patch-append.patch"

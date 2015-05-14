@@ -1,0 +1,54 @@
+diff --git a/drivers/platform/x86/quark/intel_qrk_esram.c b/drivers/platform/x86/quark/intel_qrk_esram.c
+index 62ae521..877c5f3 100644
+--- a/drivers/platform/x86/quark/intel_qrk_esram.c
++++ b/drivers/platform/x86/quark/intel_qrk_esram.c
+@@ -47,7 +47,7 @@
+ #include <asm/io.h>
+ #include <asm/pgtable.h>
+ #include <asm/special_insns.h>
+-#include <asm-generic/uaccess.h>
++//#include <asm-generic/uaccess.h>
+ #include <linux/delay.h>
+ #include <linux/err.h>
+ #include <linux/fs.h>
+diff --git a/drivers/platform/x86/quark/intel_qrk_imr.c b/drivers/platform/x86/quark/intel_qrk_imr.c
+index fcae59a..6a6552a 100644
+--- a/drivers/platform/x86/quark/intel_qrk_imr.c
++++ b/drivers/platform/x86/quark/intel_qrk_imr.c
+@@ -30,7 +30,7 @@
+  * The IMR can be freed with the pre-allocated memory addresses.
+  */
+ 
+-#include <asm-generic/uaccess.h>
++//#include <asm-generic/uaccess.h>
+ #include <linux/intel_qrk_sb.h>
+ #include <linux/module.h>
+ #include <linux/platform_device.h>
+diff --git a/drivers/platform/x86/quark/intel_qrk_imr.h b/drivers/platform/x86/quark/intel_qrk_imr.h
+index a6f4730..a2bbf39 100644
+--- a/drivers/platform/x86/quark/intel_qrk_imr.h
++++ b/drivers/platform/x86/quark/intel_qrk_imr.h
+@@ -102,8 +102,8 @@
+ #define DBG(args...)
+ #endif
+ 
+-extern unsigned long  _text;
+-extern unsigned long  __init_begin;
++extern char  _text[];
++extern char  __init_begin[];
+ 
+ /**
+  * intel_qrk_imr_alloc
+diff --git a/drivers/platform/x86/quark/intel_qrk_imr_test.c b/drivers/platform/x86/quark/intel_qrk_imr_test.c
+index 549bb61..47f7905 100644
+--- a/drivers/platform/x86/quark/intel_qrk_imr_test.c
++++ b/drivers/platform/x86/quark/intel_qrk_imr_test.c
+@@ -156,7 +156,7 @@ end:
+  */
+ static int imr_violate_kernel_punit_dma(void)
+ {
+-	extern unsigned long _text;
++	extern char _text[];
+ 	u32 kernel_text = (u32)virt_to_phys(&_text);
+ 
+ 	/* We expect this to trigger an IMR violation reset */
